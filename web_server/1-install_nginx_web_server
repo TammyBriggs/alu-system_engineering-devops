@@ -1,29 +1,30 @@
 #!/usr/bin/env bash
-# Installing nginx on a server and configuring a simple server
 
-# Updating packages
-sudo apt-get update -y && sudo apt-get upgrade -y
+# Update package lists and upgrade (optional, can be commented out if already done)
+# sudo apt-get update -y && sudo apt-get upgrade -y
 
-# Installing nginx
+# Install Nginx web server
 sudo apt-get install nginx -y
 
-# Creating an index html file
-echo "Holberton School" >  /var/www/html/index.html
+# Create the index.html file
+echo "Holberton School" > /var/www/html/index.html
 
-# Altering the server config to create a server
-echo "
-events {
+# Create a new server block configuration file
+sudo touch /etc/nginx/sites-available/default
 
+# Configure the server block
+cat << EOF | sudo tee /etc/nginx/sites-available/default
+server {
+  listen 80;
+  index index.html;
+  root /var/www/html;
+
+  # Add any additional server configurations here (optional)
 }
+EOF
 
-http {
-	server {
-		listen 80;
-		index index.html;
-		root /var/www/html;
-	}
-}
-"  | sudo tee /etc/nginx/nginx.conf
+# Enable the new server block
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
-# Restarting the server with the new config
+# Restart Nginx service
 sudo service nginx restart
