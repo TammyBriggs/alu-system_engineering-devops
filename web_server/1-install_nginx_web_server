@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
-
-# Update package lists and upgrade (optional, can be commented out if already done)
-# sudo apt-get update -y && sudo apt-get upgrade -y
-
-# Install Nginx web server
+# Installing nginx on a server and configuring a simple server
 sudo apt-get install nginx -y
 
 # Create the index.html file
