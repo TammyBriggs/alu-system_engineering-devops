@@ -34,14 +34,14 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
-frontend davidniyonshuti-tech-frontend
+frontend tamunotonyebriggs-tech-frontend
     bind *:80
-    default_backend davidniyonshuti-tech-backend
+    default_backend tamunotonyebriggs-tech-backend
 
-backend davidniyonshuti-tech-backend
+backend tamunotonyebriggs-tech-backend
     balance roundrobin
-    server 6050-web-01 107.23.166.233:80 check
-    server 6050-web-02 54.196.146.125:80 check
+    server 6164-web-01 34.236.154.253:80 check
+    server 6164-web-02 54.174.28.228:80 check
 "
 
 # shellcheck disable=SC2154
