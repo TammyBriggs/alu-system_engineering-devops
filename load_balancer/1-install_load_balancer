@@ -33,6 +33,7 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
+<<<<<<< HEAD
 frontend davidniyonshuti-tech-frontend
   bind *:80
   default_backend davidniyonshuti-tech-backend
@@ -43,6 +44,17 @@ backend davidniyonshuti-tech-backend
   server 6050-web-02 54.196.146.125:80 check
 EOF
 )
+=======
+frontend tamunotonyebriggs-tech-frontend
+    bind *:80
+    default_backend tamunotonyebriggs-tech-backend
+
+backend tamunotonyebriggs-tech-backend
+    balance roundrobin
+    server 6164-web-01 34.236.154.253:80 check
+    server 6164-web-02 54.174.28.228:80 check
+"
+>>>>>>> 65325f07d8945d973783427f443e96998f46be0e
 
 # Write configuration using standard method (cat + sudo tee)
 echo "$server_config" | sudo tee /etc/haproxy/haproxy.cfg
